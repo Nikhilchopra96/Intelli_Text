@@ -1,0 +1,135 @@
+
+lecture-7:
+
+rfc => export default function TextForm() {  -> rfc -> form control code (bootstrap->component) -> copy code -> import text form in app.js -> div.container banao
+        return (
+          <div>
+      
+          </div>
+        )
+      }
+
+<div className="container my-3"> -> my-3 is used to give a margin in a class
+-> we use button.btn.btn-primary-> for button
+
+Note: {in js-> (class=>className),(for => htmlFor) }
+
+props-> Props are short for "properties" and are used to pass data from one component to another 
+state-> State is a mechanism for a component to maintain and manage its own local state. 
+
+-> Search Hooks -> import this -> (import React, { useState } from 'react';)
+				  ( const [count, setCount] = useState(0);))
+
+hooks->(means bina class banaye hum class ke features use kar sakte hai)
+
+// bina page ko reload kiye sub update ho jayega using below line (remember this line )
+   	const [text, setText] = useState('Enter text here');
+// text name ki ek state set kari hai (text) jiski default value hai ('Enter text here')
+	<h1> {props.heading} - {text} </h1> ==> {enter text here kardo yaha par} 
+	 		(value={text})	    ==> lekin hum isko iss box mai set karege
+
+
+full process till now ==> value={text} kiya -> onchange-error ko ignore karne ke liye -> then onclick-button par kiya hai -> jaise he button press karege -> onclick function will start-> the we will go to onclick function -> waha se humne ek setText("---") kar rakha hai -> jo ki rexecute hone ke baad value={text} mai reflect karega then BOX par message likh ho jayega 
+
+onChange function ko modify kiya jisme event dal diya as an argument -> jab bhi text denge -> onchange function mai chale jayege -> then hum text ko setText se set kar denge using (event.target.value)==(mera personal meaning for understanding target=event, value=target ) se
+
+const handleUpClick =()=>{
+        console.log(" UpperCase was Clicked "+ text);
+        let newText=text.toUpperCase();
+        setText(newText)
+    }
+here, first we convert the text into upper text using toUpperCase then set into setText
+
+
+
+
+
+
+
+
+
+
+
+first we go to textform.js -> then we go to div part inside return -> then we write a classname="container" in it because we want to use it -> then we create a new div below that div -> div.container with my-3{just for margin} -> then we write h1 ,p -> inside p ==> <p> ____ words and ____ character </p> , <p>{ text.split(" ").length} words and {text.length} characters</p> -> here text.split(" ") -> text.split(" ") gives the array which contains words -> text.split(" ").length will give the length of the that array -> similarly we are calculating reading time -> similarly we are using {text-summary},{preview} for more informatio to the user 
+
+-> now we are making a new button for conversion into lower text -> we used {mx-2} to give horizontal spacing -> mx-2 is a bootstrap class -> _____<nav className="navbar navbar-dark bg-dark">_____,_____<nav className="navbar navbar-light bg-light">______ -> these nav can change the nav bar into different colors -> then navbar button color change code -> written in code itself
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Lecture 10:
+
+
+  create a new js file inside component -> About.js {file name} -> rfc {we get react function based component} -> go to bootstrap -> component -> Accordion -> copy the whole code written over there -> so we are commenting out textform here -> then we are using {About} instead of {TextForm} -> we are making a button inside div named Enable Dark Mode -> we can copy the button from bootstrap
+  
+  in first div {aboutUs wale mai} we add style -> style={mystyle} -> mystyle is an object -> then we will use color,backgroundColor -> mystyle accordion mai bhi dal denge
+  
+  -> so we are using a state variable here {myStyle} -> import react,{useState} from 'react' -> we will use toggle function to change the background color -> function is self explainatory
+  
+
+
+
+
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+Lecture 12:
+
+
+So we are going to add alert in our app -> go to bootstrap -> go to component -> go to alerts -> rfce -> we made a new alert.js file -> paste {alert div} into alert.js file -> we use props here -> we use props.alert -> {props.alert} in place of text strong wala -> { const [Alert,setAlert] =useState(null) } -> we made this state variable in app.js intialize as null  -> alert is an object here (imp) ->so we use below function which will help us to show alert method
+
+const showAlert =(message,type){} 
+
+const showAlert =(message,type){
+    setAlert({
+      msg:message,
+      type:type
+    })
+  }
+
+-> now i pass { <Alert alert={alert}/> } -> changes to be done in alert.js { <strong>{props.alert.type}</strong> : {props.alert.msg} } -> { props.alert && <div className.......... } use this in alert because null is initial value -> it means { null.type = will give error } -> { props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert"> } so this line is use to change the color of the alert bar -> to capatilized we have to make a function which can capitalize the first letter -> 
+
+const capatalize=(word)=>{
+        const lower =word.toLowerCase();
+        return lower.charAt(0).toUpperCase() +lower.slice(1);
+    }
+
+-> basically this is used to capatalize the first alphabet of the function -> { capatalize(props.alert.type) } so this is the change which we need to do to update the {success} into {Success} -> { <TextForm showAlert={showAlert} heading="Enter the text to analyze" Mode={Mode}/> } -> we want to give the update while clicking also...... -> 
+
+setTimeout(() => {
+      setAlert(null)
+    }, 1000); 
+
+-> set alert ka timeout set kar diya -> 
+
+
+
+
+
+
+
+
+
+
+
+
+
